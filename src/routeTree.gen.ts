@@ -9,25 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SpecRouteImport } from './routes/spec'
-import { Route as GetInvolvedRouteImport } from './routes/get-involved'
-import { Route as AdoptRouteImport } from './routes/adopt'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdoptRouteImport } from './routes/adopt'
+import { Route as GetInvolvedRouteImport } from './routes/get-involved'
+import { Route as SpecRouteImport } from './routes/spec'
 
-const SpecRoute = SpecRouteImport.update({
-  id: '/spec',
-  path: '/spec',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetInvolvedRoute = GetInvolvedRouteImport.update({
-  id: '/get-involved',
-  path: '/get-involved',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdoptRoute = AdoptRouteImport.update({
-  id: '/adopt',
-  path: '/adopt',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -35,9 +25,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdoptRoute = AdoptRouteImport.update({
+  id: '/adopt',
+  path: '/adopt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetInvolvedRoute = GetInvolvedRouteImport.update({
+  id: '/get-involved',
+  path: '/get-involved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpecRoute = SpecRouteImport.update({
+  id: '/spec',
+  path: '/spec',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -81,25 +81,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/spec': {
-      id: '/spec'
-      path: '/spec'
-      fullPath: '/spec'
-      preLoaderRoute: typeof SpecRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/get-involved': {
-      id: '/get-involved'
-      path: '/get-involved'
-      fullPath: '/get-involved'
-      preLoaderRoute: typeof GetInvolvedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/adopt': {
-      id: '/adopt'
-      path: '/adopt'
-      fullPath: '/adopt'
-      preLoaderRoute: typeof AdoptRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -109,11 +95,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/adopt': {
+      id: '/adopt'
+      path: '/adopt'
+      fullPath: '/adopt'
+      preLoaderRoute: typeof AdoptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-involved': {
+      id: '/get-involved'
+      path: '/get-involved'
+      fullPath: '/get-involved'
+      preLoaderRoute: typeof GetInvolvedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spec': {
+      id: '/spec'
+      path: '/spec'
+      fullPath: '/spec'
+      preLoaderRoute: typeof SpecRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
