@@ -82,7 +82,7 @@ function Index() {
         <Container wide>
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "0.8rem" }}>
             <span>New · COSTA 2.0 draft: lab reports, GTIN history and provincial profiles</span>
-            <Link to="/news/costa-2-0">Read the announcement →</Link>
+            <Link to="/news/$slug" params={{ slug: "costa-2-0" }}>Read the announcement →</Link>
           </div>
         </Container>
       </section>

@@ -64,8 +64,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "COSTA — An open standard for cannabis product data" },
       { property: "og:description", content: "COSTA is the Cannabis Open Standards Technology Alliance — a vendor-neutral schema for cannabis product data on the open web." },
       { name: "twitter:description", content: "COSTA is the Cannabis Open Standards Technology Alliance — a vendor-neutral schema for cannabis product data on the open web." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/e584dd42-9e20-47dc-a22f-1058501bca96" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/e584dd42-9e20-47dc-a22f-1058501bca96" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:type", content: "website" },
     ],
