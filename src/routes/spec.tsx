@@ -9,10 +9,10 @@ import { parseSpecMetadata } from "../lib/spec-metadata";
 export const Route = createFileRoute("/spec")({
   head: () => ({
     meta: [
-      { title: "GoCosta Schema Specification v1.0 — COSTA" },
-      { name: "description", content: "The GoCosta Cannabis Product Schema v1.0 — full technical specification, JSON-LD and XML representations, and implementation guidance." },
-      { property: "og:title", content: "GoCosta Schema Specification v1.0 — COSTA" },
-      { property: "og:description", content: "The GoCosta Cannabis Product Schema v1.0 — full technical specification, JSON-LD and XML representations, and implementation guidance." },
+      { title: "COSTA 2.0 Specification — COSTA" },
+      { name: "description", content: "The COSTA 2.0 open cannabis product data standard: product, lot and lab report data, GTIN history and provincial profiles, in JSON, JSON-LD and XML." },
+      { property: "og:title", content: "COSTA 2.0 Specification — COSTA" },
+      { property: "og:description", content: "The COSTA 2.0 open cannabis product data standard: product, lot and lab report data, GTIN history and provincial profiles, in JSON, JSON-LD and XML." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -79,8 +79,8 @@ function Spec() {
     <Layout>
       <PageHead
         eyebrow="Specification"
-        title={metadata?.title ?? "GoCosta Cannabis Product Schema v1.0"}
-        lede="The full technical specification for representing cannabis product data on the open web — in JSON-LD and XML."
+        title={metadata?.title ?? "COSTA 2.0: Open Cannabis Product Data Standard"}
+        lede="The full technical specification for cannabis product, lot and lab report data — in JSON, JSON-LD and XML."
       />
 
       <div style={{ borderBottom: "1px solid var(--rule)" }}>
@@ -88,9 +88,9 @@ function Spec() {
           {metadata ? metadata.chips.map(({ key, value }) => (
             <Chip key={key} accent={key === "Version"}>{value}</Chip>
           )) : <>
-            <Chip accent>v1.0</Chip>
-            <Chip>Published November 2025</Chip>
-            <Chip>CC BY 4.0</Chip>
+            <Chip accent>v2.0</Chip>
+            <Chip>Draft for public comment</Chip>
+            <Chip>MIT</Chip>
           </>}
           <a href="https://github.com/xlsuite/costa/blob/main/gocosta-schema-spec.md" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <Chip>Source on GitHub →</Chip>
@@ -122,7 +122,8 @@ function Spec() {
                 <div className="eyebrow" style={{ marginBottom: "0.6rem" }}>Related</div>
                 <ul className="spec-related">
                   <li><a href="/adopt">How to adopt →</a></li>
-                  <li><a href="https://github.com/xlsuite/costa/blob/main/gocosta-producer-template.md" target="_blank" rel="noopener noreferrer">Producer template (raw)</a></li>
+                  <li><a href="https://github.com/xlsuite/costa/blob/main/gocosta-producer-template.md" target="_blank" rel="noopener noreferrer">Producer guide</a></li>
+                  <li><a href="https://github.com/xlsuite/costa/tree/main/tools" target="_blank" rel="noopener noreferrer">Validator and examples</a></li>
                   <li><a href="https://github.com/xlsuite/costa" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
                 </ul>
               </div>

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "../components/site/Layout";
 import {
   Hero,
@@ -11,31 +11,34 @@ import {
 } from "../components/site/primitives";
 
 const HOME_JSON = `{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "OG Kush Dried Flower",
-  "brand": { "@type": "Brand", "name": "Heritage Cannabis Co." },
-  "sku": "HC-OGK-FLOWER-3.5G",
-  "offers": {
-    "@type": "Offer",
-    "price": "12.99",
-    "priceCurrency": "CAD",
-    "availability": "https://schema.org/InStock"
+  "@context": "https://gocosta.org/ns/costa-2.0.jsonld",
+  "@type": "CostaProduct",
+  "costaVersion": "2.0",
+  "costaId": "https://producer.example/costa/products/3f2a9c1e-7b1d-4c55-9a43-0d6b8f1e2a10",
+  "recordVersion": 4,
+  "recordUpdated": "2026-10-28T14:05:00Z",
+  "status": "active",
+  "conformsTo": ["ca-federal/2.0"],
+  "identifiers": {
+    "gtins": [
+      { "gtin": "00628123000105", "packagingLevel": "consumerUnit",
+        "validFrom": "2026-03-01", "validThrough": null, "status": "active" }
+    ]
   },
-  "cannabis": {
-    "@type": "CannabisProduct",
-    "cannabinoidProfile": { "thcPercent": 18.5, "cbdPercent": 0.1 },
-    "strain": { "name": "OG Kush", "type": "Hybrid" },
-    "terpeneProfile": { "dominant": ["Myrcene", "Limonene", "Caryophyllene"] },
-    "productForm": "Dried Flower",
-    "packageSize": "3.5g",
-    "classOfCannabis": "Cannabis (dried)",
-    "healthCanadaLicenseNum": "LC0001234567",
-    "testing": {
-      "testedForContaminants": true,
-      "testResultsUrl": "https://producer.ca/coa/og-kush-batch-0847.pdf"
-    }
-  }
+  "name": { "en": "Northern Lights Dried Flower 3.5 g", "fr": "Northern Lights fleurs séchées 3,5 g" },
+  "brand": { "name": "Northshore" },
+  "licenceHolder": { "legalName": "Northshore Cannabis Co. Ltd.", "role": "processor",
+                     "phone": "+1 613 555 0100", "email": "info@producer.example" },
+  "classOfCannabis": "dried cannabis",
+  "productForm": "driedFlower",
+  "discreteUnits": false,
+  "netContent": { "value": 3.5, "unit": "g" },
+  "potency": {
+    "totalThc": { "unit": "mg/g", "min": 200, "max": 260 },
+    "totalCbd": { "unit": "mg/g", "min": 0, "max": 2 }
+  },
+  "terpenes": { "dominant": ["beta-Myrcene", "beta-Caryophyllene", "Limonene"] },
+  "strain": { "name": "Northern Lights", "plantType": "indicaDominant" }
 }`;
 
 export const Route = createFileRoute("/")({
@@ -47,6 +50,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "A vendor-neutral schema for cannabis product data on the open web." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://gocosta.org" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
@@ -54,9 +58,9 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { value: "1", label: "Source of truth per product" },
-  { value: "2", label: "Wire formats: JSON-LD and XML" },
+  { value: "2", label: "Wire formats: JSON-LD and XML, generated from one schema" },
   { value: "30+", label: "Schema fields covering cannabinoids, terpenes, testing, and compliance" },
-  { value: "CC BY 4.0", label: "Open licensing for the specification" },
+  { value: "MIT", label: "Open license for the specification and reference code" },
 ];
 
 function Index() {
@@ -74,6 +78,15 @@ function Index() {
         }
       />
 
+      <section style={{ background: "var(--bg-alt)", borderBlock: "1px solid var(--rule)", paddingBlock: 20 }}>
+        <Container wide>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "0.8rem" }}>
+            <span>New · COSTA 2.0 draft: lab reports, GTIN history and provincial profiles</span>
+            <Link to="/news/costa-2-0">Read the announcement →</Link>
+          </div>
+        </Container>
+      </section>
+
       {/* The problem */}
       <Section>
         <Container wide>
@@ -84,13 +97,13 @@ function Index() {
           />
           <div className="costa-cards-3">
             <Card iconLabel="01 / Standardize" title="One schema, every channel">
-              A single JSON-LD and XML representation for cannabinoids, terpenes, strain, packaging, testing, and regulatory data — built on schema.org so search engines understand it natively.
+              One schema for product, lot and lab report data, in JSON-LD and XML. Product pages keep using schema.org/Product, so search engines understand them natively.
             </Card>
             <Card iconLabel="02 / Decentralize" title="You host your own data">
-              No central authority, no API to pay for, no gatekeeper. Embed the JSON-LD on your product pages or publish an XML feed from your own domain. Aggregators come to you.
+              No central authority, no API to pay for, no gatekeeper. Publish a feed at /.well-known/costa/feed.json on your own domain and link it from your product pages. Aggregators come to you.
             </Card>
             <Card iconLabel="03 / Comply" title="Regulatory-aware by design">
-              Fields for Health Canada class of cannabis, license number, batch/lot, expiry, COA links, and access requirements are first-class — not bolted on. U.S. state extensions are on the roadmap.
+              Health Canada classes of cannabis, label-basis potency, lot data, structured lab reports and provincial supplier profiles are first-class, not bolted on. A free reference validator checks them.
             </Card>
           </div>
         </Container>
@@ -116,10 +129,10 @@ function Index() {
           <SectionHeader
             kicker="Built on"
             title="Standards you already trust."
-            body="COSTA extends widely adopted web standards rather than inventing new ones. If your team already publishes schema.org markup or GS1 feeds, you are most of the way there."
+            body="COSTA extends widely adopted web standards rather than inventing new ones. If your team already publishes schema.org markup or GS1 GTINs, you are most of the way there."
           />
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
-            {["schema.org/Product","JSON-LD","XML / XSD","ISO 8601","GS1 GTIN","Health Canada classes","CC BY 4.0"].map((c) => (
+            {["schema.org/Product","JSON-LD","JSON Schema","XML / XSD","ISO 8601","GS1 GTIN","Health Canada classes","MIT"].map((c) => (
               <Chip key={c}>{c}</Chip>
             ))}
           </div>
@@ -132,7 +145,7 @@ function Index() {
           <SectionHeader
             kicker="Example"
             title="What a COSTA product looks like."
-            body={<>Below is an abridged JSON-LD block that a producer drops into the <code style={{ fontFamily: "var(--font-mono)", background: "var(--code-bg)", border: "1px solid var(--rule)", padding: "1px 6px", borderRadius: 3, fontSize: "0.88em" }}>&lt;head&gt;</code> of a product page. See the <a href="/spec" style={{ color: "var(--accent)", textDecoration: "underline" }}>full specification</a> for every field.</>}
+            body={<>Below is a minimal COSTA 2.0 product record for a fictional producer. It passes the reference validator for the federal profile. See the <Link to="/spec">full specification</Link> for every field, plus lot and lab report records.</>}
           />
           <pre className="codeblock"><code>{HOME_JSON}</code></pre>
         </Container>
@@ -145,7 +158,7 @@ function Index() {
           <div className="costa-cards-4">
             <Card title="Cut catalog work">Maintain one canonical product record. Marketplaces, dispensaries, and aggregators read directly from your site.</Card>
             <Card title="Reach search and AI">JSON-LD on schema.org/Product unlocks rich results in search and gives LLM-powered shopping tools structured data they can rely on.</Card>
-            <Card title="Stay compliant without rework">Required fields map cleanly to Health Canada classes, license numbers, batch and lot, COA URLs, and 19+ access requirements.</Card>
+            <Card title="Stay compliant without rework">The validator checks your data against Health Canada label rules, THC limits and lab results, and against OCS, BC LDB and SQDC supplier requirements, before anyone else sees it.</Card>
             <Card title="Own your data">COSTA is decentralized. There is no platform to lock you in, no fees, no gatekeeper between you and the channels reading your catalog.</Card>
           </div>
           <div style={{ marginTop: "2rem" }}>
@@ -158,9 +171,9 @@ function Index() {
       <Section alt>
         <Container wide>
           <div style={{ textAlign: "center", maxWidth: 640, marginInline: "auto" }}>
-            <h2 style={{ fontSize: "1.8rem" }}>Help shape v1.1.</h2>
+            <h2 style={{ fontSize: "1.8rem" }}>Help shape 2.0.</h2>
             <p style={{ color: "var(--ink-muted)", marginTop: "1rem" }}>
-              The spec is open. File an issue, propose a field, or fork the repo. We are actively soliciting feedback from licensed producers, marketplaces, and provincial regulators.
+              COSTA 2.0 is a draft for public comment. File an issue, propose a change, or fork the repo. We are actively seeking feedback from licensed producers, labs, marketplaces and provincial distributors.
             </p>
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "0.8rem", justifyContent: "center", flexWrap: "wrap" }}>
               <Button href="https://github.com/xlsuite/costa" external variant="solid">View on GitHub</Button>

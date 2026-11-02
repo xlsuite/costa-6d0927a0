@@ -7,6 +7,10 @@ export const Route = createFileRoute("/adopt")({
     meta: [
       { title: "Adopt — COSTA" },
       { name: "description", content: "A five-step guide for licensed cannabis producers to publish their product catalog in COSTA format." },
+      { property: "og:title", content: "Adopt — COSTA" },
+      { property: "og:description", content: "A five-step guide for licensed cannabis producers to publish their product catalog in COSTA format." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Adopt,
