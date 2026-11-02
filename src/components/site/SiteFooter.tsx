@@ -31,8 +31,8 @@ export function SiteFooter() {
           <div>
             <div className="costa-footer-h">Specification</div>
             <ul className="costa-footer-list">
-              <li><Link to="/spec">Schema spec v1.0</Link></li>
-              <li><a href="https://github.com/xlsuite/costa/blob/main/gocosta-producer-template.md" target="_blank" rel="noopener noreferrer">Producer template</a></li>
+              <li><Link to="/spec">Specification v2.0</Link></li>
+              <li><a href="https://github.com/xlsuite/costa/blob/main/gocosta-producer-template.md" target="_blank" rel="noopener noreferrer">Producer guide</a></li>
               <li><a href="https://github.com/xlsuite/costa" target="_blank" rel="noopener noreferrer">Source on GitHub</a></li>
             </ul>
           </div>
@@ -41,6 +41,7 @@ export function SiteFooter() {
             <div className="costa-footer-h">Alliance</div>
             <ul className="costa-footer-list">
               <li><Link to="/about">About & governance</Link></li>
+              <li><Link to="/news">News</Link></li>
               <li><Link to="/get-involved">Get involved</Link></li>
               <li><a href="mailto:hello@gocosta.org">hello@gocosta.org</a></li>
             </ul>
@@ -56,7 +57,7 @@ export function SiteFooter() {
             fontSize: "0.82rem",
           }}
         >
-          © 2026 Cannabis Open Standards Technology Alliance · Specification licensed under CC BY 4.0 · Code under MIT · github.com/xlsuite/costa
+          © 2026 Cannabis Open Standards Technology Alliance · Specification and reference code under MIT · github.com/xlsuite/costa
         </div>
       </div>
       <style>{`

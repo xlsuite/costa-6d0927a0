@@ -7,6 +7,10 @@ export const Route = createFileRoute("/about")({
     meta: [
       { title: "About — COSTA" },
       { name: "description", content: "COSTA exists to give the cannabis industry a single open standard for product data — independent of any marketplace, dispensary, or regulator." },
+      { property: "og:title", content: "About — COSTA" },
+      { property: "og:description", content: "COSTA exists to give the cannabis industry a single open standard for product data — independent of any marketplace, dispensary, or regulator." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: About,
@@ -24,10 +28,10 @@ function About() {
         <article className="prose" style={{ paddingBlock: "56px" }}>
           <h2>What COSTA is</h2>
           <p>
-            COSTA is a public-interest alliance that maintains an open specification for cannabis product data. The specification — <Link to="/spec">GoCosta Cannabis Product Schema</Link> — defines a JSON-LD and XML representation for cannabinoid profiles, strain and genetics, terpene data, packaging, regulatory fields, lab testing, and pricing. It is built on <a href="https://schema.org/Product" target="_blank" rel="noopener noreferrer">schema.org/Product</a> and aligned with Health Canada's product classes.
+            COSTA is a public-interest alliance that maintains an open specification for cannabis product data. The <Link to="/spec">COSTA 2.0 specification</Link> defines product, lot and lab report data for cannabis products, in JSON-LD and XML: classification, label-basis potency, terpenes, strain and cultivation, GTIN history, lot data, structured certificates of analysis, and provincial supplier profiles. Product pages use schema.org/Product, and the classes follow Health Canada's classes of cannabis.
           </p>
           <p>
-            The spec is published under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> and the reference code under the MIT license. There is no membership fee, no API, and no central registry. Producers host their own data on their own domains. Aggregators read it.
+            The specification and reference code are published under the MIT license. There is no membership fee, no API, and no central data store. Producers host their own data on their own domains, and an open registry helps readers find their feeds.
           </p>
 
           <h2>Why it exists</h2>
@@ -42,10 +46,10 @@ function About() {
           <p>Five commitments shape every decision about the specification:</p>
           <ul>
             <li><strong>Decentralized.</strong> Data lives on the producer's domain. No platform owns the registry.</li>
-            <li><strong>Open.</strong> Built on schema.org and other widely adopted web standards. Spec under CC BY 4.0. Code under MIT.</li>
-            <li><strong>Consumer-centric.</strong> Cannabinoid, terpene, effect, and testing data are first-class — not afterthoughts.</li>
+            <li><strong>Open.</strong> Built on schema.org and other widely adopted web standards. Specification and code under MIT.</li>
+            <li><strong>Consumer-centric.</strong> Cannabinoid, terpene, lot and lab data are first-class, not afterthoughts.</li>
             <li><strong>Interoperable.</strong> Any dispensary, marketplace, search engine, or AI shopping tool can consume the same payload.</li>
-            <li><strong>Regulatory-aware.</strong> Health Canada classes, license numbers, batch and lot, expiry, and 19+ access are part of the core schema, not extensions.</li>
+            <li><strong>Regulatory-aware.</strong> Health Canada classes of cannabis, label statements, THC limits, lot data and lab testing are part of the core schema, and provincial requirements are checked by profiles.</li>
           </ul>
 
           <h2>Governance</h2>
@@ -66,7 +70,7 @@ function About() {
 
           <h2>Scope</h2>
           <p>
-            v1.0 of the specification covers the data a licensed producer would publish for an individual SKU sold to adult consumers. Future versions on the roadmap include batch-level traceability, harvest data, consumer reviews as structured data, U.S. state-specific regulatory variants, and medical cannabis certifications. The spec is extensible: producers can add custom fields under their own namespace without breaking interoperability.
+            COSTA 2.0 covers the data a licensed producer publishes for each product and lot sold in Canada: product master data, lot data and lab results. It does not cover pricing, orders or inventory reporting. Next on the roadmap: profiles for the remaining provinces and territories, U.S. state variants, and published validator packages. The schema is extensible: publishers can add their own fields under a namespaced prefix without breaking interoperability.
           </p>
 
           <h2>What COSTA is not</h2>

@@ -1,6 +1,5 @@
-# Requested changes
+# COSTA 2.0 site update
 
-- [x] Add the exact COSTA 2.0 JSON Schema, headers, and hash test.
-- [x] Handle the namespace redirect before application routing.
-- [x] Derive spec title and chips from markdown, preserving legacy fallback.
-- [x] Run tests and verify responses, spec states, and clean build.
+- [x] Update Home, Adopt, Spec, About, and Get involved with supplied copy and snippets.
+- [x] Add shared news data, news listing, launch post, and navigation links.
+- [x] Verify existing tests, protected files, news navigation, mobile display, and automated production build.

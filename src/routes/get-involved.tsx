@@ -7,6 +7,10 @@ export const Route = createFileRoute("/get-involved")({
     meta: [
       { title: "Get involved — COSTA" },
       { name: "description", content: "Contribute to the COSTA specification, join the alliance, or get in touch." },
+      { property: "og:title", content: "Get involved — COSTA" },
+      { property: "og:description", content: "Contribute to the COSTA specification, join the alliance, or get in touch." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: GetInvolved,
@@ -39,7 +43,7 @@ function GetInvolved() {
             <ContribCard
               icon="For marketplaces & tech"
               title="Consume COSTA feeds"
-              body="If you operate a dispensary, marketplace, aggregator, or shopping tool, build a COSTA reader. Reading the spec is straightforward; the JSON-LD is standard schema.org."
+              body="If you operate a dispensary, marketplace, aggregator or shopping tool, build a COSTA reader. Feeds are plain JSON with a published JSON Schema, and the reference validator is open source."
               cta={<Button to="/spec" variant="ghost">Read the spec →</Button>}
             />
             <ContribCard
@@ -66,19 +70,19 @@ function GetInvolved() {
             <li>If there is rough consensus, a pull request is opened with the concrete change.</li>
             <li>The maintainers merge once the PR is reviewed and aligned with the principles in the <a href="/about">about page</a>.</li>
           </ol>
-          <p>Backwards-incompatible changes wait for a major version (v2.0). Additive changes — new optional fields, new enum values — ship in minor versions (v1.1, v1.2). The version field on every payload makes it unambiguous which revision of the spec your data targets.</p>
+          <p>Backwards-incompatible changes wait for a major version. Additive changes, such as new optional fields or enum values, ship in minor versions. Provincial profiles are versioned separately because provincial rules change more often. Every COSTA document carries a costaVersion field, so it is always clear which revision it targets.</p>
 
           <h2>Contact</h2>
           <p>For anything that does not belong on a public GitHub issue — partnership conversations, regulatory coordination, press — email <a href="mailto:hello@gocosta.org">hello@gocosta.org</a>.</p>
 
           <Callout title="Roadmap candidates">
-            <p style={{ marginTop: 0 }}>Active areas of work for v1.1 and beyond:</p>
+            <p style={{ marginTop: 0 }}>Active areas of work after 2.0:</p>
             <ul style={{ margin: "0.5em 0 0", paddingLeft: "1.4em" }}>
-              <li>U.S. state regulatory variants (California METRC, Colorado MED, Washington WSLCB).</li>
-              <li>Batch-level traceability and harvest data.</li>
-              <li>Consumer reviews as structured data.</li>
-              <li>Medical cannabis certifications and therapeutic-use fields.</li>
-              <li>Reference validators in JavaScript and Python, published as packages.</li>
+              <li>Profiles for Saskatchewan, Manitoba, the Atlantic provinces and the territories, and a full review of Alberta's.</li>
+              <li>U.S. state regulatory variants.</li>
+              <li>Validator packages for JavaScript and Python.</li>
+              <li>Feed signing and registry tooling.</li>
+              <li>Pilots with producers, labs and provincial distributors.</li>
             </ul>
           </Callout>
 
