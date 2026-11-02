@@ -1,0 +1,3 @@
+/ns/*
+  Content-Type: application/ld+json
+  Access-Control-Allow-Origin: *
