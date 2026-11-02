@@ -63,7 +63,7 @@ function Index() {
   return (
     <Layout>
       <Hero
-        eyebrow="v1.0 · Published November 2025"
+        eyebrow="v2.0 · Published November 2, 2026"
         title="An open standard for cannabis product data."
         lede="COSTA is the Cannabis Open Standards Technology Alliance. We maintain a vendor-neutral schema that lets licensed producers publish product information once — and have it read consistently by every dispensary, marketplace, regulator, and search engine that consumes it."
         ctas={
