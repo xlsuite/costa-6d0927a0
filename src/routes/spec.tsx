@@ -95,6 +95,9 @@ function Spec() {
           <a href="https://github.com/xlsuite/costa/blob/main/gocosta-schema-spec.md" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <Chip>Source on GitHub →</Chip>
           </a>
+          <a href="/schemas/costa-2.0.schema.json" download="costa-2.0.schema.json" style={{ textDecoration: "none" }}>
+            <Chip>Download COSTA 2.0 JSON Schema ↓</Chip>
+          </a>
         </div>
       </div>
 
