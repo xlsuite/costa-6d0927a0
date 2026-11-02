@@ -131,7 +131,7 @@ function Spec() {
           </aside>
 
           <Container>
-            <div className="docs" style={{ maxWidth: 740 }}>
+            <div className="docs min-w-0 [overflow-wrap:anywhere] [&_table]:block [&_table]:overflow-x-auto" style={{ maxWidth: 740 }}>
               {!md && !err && <p style={{ color: "var(--ink-muted)" }}>Loading specification…</p>}
               {err && (
                 <Callout title="Failed to load">
@@ -165,7 +165,7 @@ function Spec() {
       </div>
 
       <style>{`
-        .spec-layout { display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem; align-items: start; }
+        .spec-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
         .spec-toc-sticky { position: sticky; top: 80px; }
         .spec-toc-collapse summary { list-style: none; cursor: pointer; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 0.8rem; }
         .spec-toc-collapse summary::-webkit-details-marker { display: none; }
@@ -173,7 +173,7 @@ function Spec() {
         .spec-toc nav a, .spec-related a { color: var(--ink-muted); text-decoration: none; font-size: 0.88rem; line-height: 1.35; display: block; padding: 2px 0; }
         .spec-toc nav a:hover, .spec-related a:hover { color: var(--accent); }
         @media (max-width: 900px) {
-          .spec-layout { grid-template-columns: 1fr; }
+          .spec-layout { grid-template-columns: minmax(0, 1fr); }
           .spec-toc-sticky { position: static; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
         }
       `}</style>
