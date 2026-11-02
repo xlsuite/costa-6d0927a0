@@ -4,12 +4,17 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Layout } from "../components/site/Layout";
 import { PageHead, Container, Callout, Chip } from "../components/site/primitives";
+import { parseSpecMetadata } from "../lib/spec-metadata";
 
 export const Route = createFileRoute("/spec")({
   head: () => ({
     meta: [
       { title: "GoCosta Schema Specification v1.0 — COSTA" },
       { name: "description", content: "The GoCosta Cannabis Product Schema v1.0 — full technical specification, JSON-LD and XML representations, and implementation guidance." },
+      { property: "og:title", content: "GoCosta Schema Specification v1.0 — COSTA" },
+      { property: "og:description", content: "The GoCosta Cannabis Product Schema v1.0 — full technical specification, JSON-LD and XML representations, and implementation guidance." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Spec,
@@ -31,6 +36,14 @@ type Heading = { level: 2 | 3; text: string; id: string };
 function Spec() {
   const [md, setMd] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const metadata = useMemo(() => parseSpecMetadata(md), [md]);
+
+  useEffect(() => {
+    if (!metadata?.title) return;
+    const previousTitle = document.title;
+    document.title = `${metadata.title} — COSTA`;
+    return () => { document.title = previousTitle; };
+  }, [metadata]);
 
   useEffect(() => {
     let cancelled = false;
@@ -66,15 +79,19 @@ function Spec() {
     <Layout>
       <PageHead
         eyebrow="Specification"
-        title="GoCosta Cannabis Product Schema v1.0"
+        title={metadata?.title ?? "GoCosta Cannabis Product Schema v1.0"}
         lede="The full technical specification for representing cannabis product data on the open web — in JSON-LD and XML."
       />
 
       <div style={{ borderBottom: "1px solid var(--rule)" }}>
         <div style={{ maxWidth: 1100, marginInline: "auto", paddingInline: 24, paddingBlock: 20, display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-          <Chip accent>v1.0</Chip>
-          <Chip>Published November 2025</Chip>
-          <Chip>CC BY 4.0</Chip>
+          {metadata ? metadata.chips.map(({ key, value }) => (
+            <Chip key={key} accent={key === "Version"}>{value}</Chip>
+          )) : <>
+            <Chip accent>v1.0</Chip>
+            <Chip>Published November 2025</Chip>
+            <Chip>CC BY 4.0</Chip>
+          </>}
           <a href="https://github.com/xlsuite/costa/blob/main/gocosta-schema-spec.md" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <Chip>Source on GitHub →</Chip>
           </a>

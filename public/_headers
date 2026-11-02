@@ -1,3 +1,7 @@
 /ns/*
   Content-Type: application/ld+json
   Access-Control-Allow-Origin: *
+
+/schemas/*
+  Content-Type: application/schema+json
+  Access-Control-Allow-Origin: *
