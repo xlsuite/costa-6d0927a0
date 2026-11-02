@@ -68,6 +68,10 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const pathname = new URL(request.url).pathname;
+    if (request.method === "GET" && (pathname === "/ns/2.0" || pathname === "/ns/2.0/")) {
+      return new Response(null, { status: 302, headers: { Location: "/spec" } });
+    }
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
