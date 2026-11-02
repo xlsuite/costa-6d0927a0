@@ -23,7 +23,9 @@ export const Route = createFileRoute("/news/$slug")({
         { property: "og:url", content: url },
         { property: "article:published_time", content: loaderData.date },
         { property: "article:author", content: loaderData.author },
-        { name: "twitter:card", content: "summary" },
+        { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/e584dd42-9e20-47dc-a22f-1058501bca96" },
+        { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/e584dd42-9e20-47dc-a22f-1058501bca96" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: url }],
     };
