@@ -69,7 +69,7 @@ function Adopt() {
         lede="Adopting COSTA means publishing your product, lot and lab data from your own domain and checking it with the free reference validator. There is no API to sign up for and no fees. Here is the path from zero to a live, validated feed."
       />
       <Container>
-        <article className="prose" style={{ paddingBlock: "56px" }}>
+        <article className="prose [overflow-wrap:anywhere]" style={{ paddingBlock: "56px" }}>
           <h2>What you'll need</h2>
           <ul>
             <li>Your GS1 GTINs for each product and packaging level.</li>

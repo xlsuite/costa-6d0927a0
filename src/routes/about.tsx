@@ -28,7 +28,7 @@ function About() {
         <article className="prose" style={{ paddingBlock: "56px" }}>
           <h2>What COSTA is</h2>
           <p>
-            COSTA is a public-interest alliance that maintains an open specification for cannabis product data. The specification defines product, lot and lab report data for cannabis products, in JSON-LD and XML: classification, label-basis potency, terpenes, strain and cultivation, GTIN history, lot data, structured certificates of analysis, and provincial supplier profiles. Product pages use schema.org/Product, and the classes follow Health Canada's classes of cannabis. See the <Link to="/spec">COSTA 2.0 specification</Link>.
+            COSTA is a public-interest alliance that maintains an open specification for cannabis product data. The <Link to="/spec">COSTA 2.0 specification</Link> defines product, lot and lab report data for cannabis products, in JSON-LD and XML: classification, label-basis potency, terpenes, strain and cultivation, GTIN history, lot data, structured certificates of analysis, and provincial supplier profiles. Product pages use schema.org/Product, and the classes follow Health Canada's classes of cannabis.
           </p>
           <p>
             The specification and reference code are published under the MIT license. There is no membership fee, no API, and no central data store. Producers host their own data on their own domains, and an open registry helps readers find their feeds.
