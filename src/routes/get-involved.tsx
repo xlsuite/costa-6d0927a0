@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "../components/site/Layout";
 import { PageHead, Container, Callout, Card, Button } from "../components/site/primitives";
 
@@ -39,8 +39,8 @@ function GetInvolved() {
             <ContribCard
               icon="For producers"
               title="Adopt and tell us"
-              body="Implement COSTA on your product catalog, then email the URL. We will list you as an adopter, notify aggregators, and use your real-world implementation to inform the next version."
-              cta={<Button to="/adopt" variant="ghost">See adoption guide →</Button>}
+              body="Implement COSTA on your product catalog, then email the URL. We will list you in the adopter directory, notify aggregators, and use your real-world implementation to inform the next version."
+              cta={<div className="flex flex-col items-start gap-3"><Button to="/adopt" variant="ghost">See adoption guide →</Button><Link to="/adopters" className="text-sm text-accent underline underline-offset-2 hover:text-accent-hover">See the adopter directory →</Link></div>}
             />
             <ContribCard
               icon="For marketplaces & tech"

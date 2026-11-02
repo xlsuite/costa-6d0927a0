@@ -107,7 +107,7 @@ function Adopt() {
           <FAQ items={faqs} />
 
           <h2>Ready to publish?</h2>
-          <p>Email <a href="mailto:hello@gocosta.org">hello@gocosta.org</a> once your feed is live. We will list you in the public adopter directory and notify the marketplaces and aggregators that read COSTA feeds.</p>
+          <p>Email <a href="mailto:hello@gocosta.org">hello@gocosta.org</a> once your feed is live. We will add you to the <Link to="/adopters">adopter directory</Link> and notify the marketplaces and aggregators that read COSTA feeds.</p>
           <div style={{ display: "flex", gap: "0.8rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
             <Button href="https://github.com/xlsuite/costa/blob/main/gocosta-producer-template.md" external variant="solid">Get the producer guide</Button>
             <Button to="/spec" variant="ghost">Read the full spec</Button>

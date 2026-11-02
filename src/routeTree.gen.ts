@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdoptRouteImport } from './routes/adopt'
+import { Route as AdoptersRouteImport } from './routes/adopters'
 import { Route as GetInvolvedRouteImport } from './routes/get-involved'
 import { Route as SpecRouteImport } from './routes/spec'
 import { Route as NewsIndexRouteImport } from './routes/news.index'
@@ -30,6 +31,11 @@ const AboutRoute = AboutRouteImport.update({
 const AdoptRoute = AdoptRouteImport.update({
   id: '/adopt',
   path: '/adopt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdoptersRoute = AdoptersRouteImport.update({
+  id: '/adopters',
+  path: '/adopters',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GetInvolvedRoute = GetInvolvedRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/adopt': typeof AdoptRoute
+  '/adopters': typeof AdoptersRoute
   '/get-involved': typeof GetInvolvedRoute
   '/spec': typeof SpecRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/adopt': typeof AdoptRoute
+  '/adopters': typeof AdoptersRoute
   '/get-involved': typeof GetInvolvedRoute
   '/spec': typeof SpecRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/adopt': typeof AdoptRoute
+  '/adopters': typeof AdoptersRoute
   '/get-involved': typeof GetInvolvedRoute
   '/spec': typeof SpecRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/adopt'
+    | '/adopters'
     | '/get-involved'
     | '/spec'
     | '/news/$slug'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/adopt'
+    | '/adopters'
     | '/get-involved'
     | '/spec'
     | '/news/$slug'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/adopt'
+    | '/adopters'
     | '/get-involved'
     | '/spec'
     | '/news/$slug'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdoptRoute: typeof AdoptRoute
+  AdoptersRoute: typeof AdoptersRoute
   GetInvolvedRoute: typeof GetInvolvedRoute
   SpecRoute: typeof SpecRoute
   NewsSlugRoute: typeof NewsSlugRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/adopt'
       fullPath: '/adopt'
       preLoaderRoute: typeof AdoptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adopters': {
+      id: '/adopters'
+      path: '/adopters'
+      fullPath: '/adopters'
+      preLoaderRoute: typeof AdoptersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/get-involved': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdoptRoute: AdoptRoute,
+  AdoptersRoute: AdoptersRoute,
   GetInvolvedRoute: GetInvolvedRoute,
   SpecRoute: SpecRoute,
   NewsSlugRoute: NewsSlugRoute,

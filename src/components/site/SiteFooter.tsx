@@ -42,6 +42,7 @@ export function SiteFooter() {
             <ul className="costa-footer-list">
               <li><Link to="/about">About & governance</Link></li>
               <li><Link to="/news">News</Link></li>
+              <li><Link to="/adopters">Adopters</Link></li>
               <li><Link to="/get-involved">Get involved</Link></li>
               <li><a href="mailto:hello@gocosta.org">hello@gocosta.org</a></li>
             </ul>
