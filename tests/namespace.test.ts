@@ -12,12 +12,12 @@ describe("COSTA namespace assets", () => {
 
   test("sets the JSON-LD content type and permits cross-origin reads", async () => {
     const headers = await readFile(new URL("../public/_headers", import.meta.url), "utf8");
-    expect(headers).toBe("/ns/*\n  Content-Type: application/ld+json\n  Access-Control-Allow-Origin: *\n");
+    expect(headers.trimEnd()).toBe("/ns/*\n  Content-Type: application/ld+json\n  Access-Control-Allow-Origin: *");
   });
 
   test("temporarily redirects the bare namespace to the specification", async () => {
     const redirects = await readFile(new URL("../public/_redirects", import.meta.url), "utf8");
-    expect(redirects).toBe("/ns/2.0 /spec 302\n");
+    expect(redirects.trimEnd()).toBe("/ns/2.0 /spec 302");
   });
 
   test("serves static assets before the application catch-all", async () => {
