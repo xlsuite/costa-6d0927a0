@@ -5,6 +5,6 @@
 - [x] Verify existing tests, protected files, news navigation, mobile display, and automated production build.
 
 ## Public adopter directory
-- [ ] Add typed adopter content, status key, directory cards, and listing guidance.
-- [ ] Link the footer, Adopt, and Get involved pages without changing the header.
-- [ ] Run tests and verify directory navigation, mobile layout, and automated production build.
+- [x] Add typed adopter content, status key, directory cards, and listing guidance.
+- [x] Link the footer, Adopt, and Get involved pages without changing the header.
+- [x] Run tests and verify directory navigation, mobile layout, and automated production build.
