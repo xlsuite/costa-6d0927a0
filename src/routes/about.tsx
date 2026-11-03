@@ -67,7 +67,7 @@ function About() {
           </ul>
 
           <Callout title="Honest disclosure">
-            COSTA was founded in 2025 by Riel Roussopoulos, who also operates a cannabis marketplace. The specification is deliberately published under a permissive open license, with code on GitHub, so that no single operator — including the founder's — can capture the standard. As adopters join, governance will move to a multi-party steering committee.
+            COSTA was founded in 2025 by Riel Roussopoulos, who is also the fractional CMO of Poof, an online cannabis marketplace in Ontario. Poof is listed in the <Link to="/adopters">adopter directory</Link> with that disclosure. The specification is deliberately published under a permissive open license, with code on GitHub, so that no single company — including Poof — can capture the standard. As adopters join, governance will move to a multi-party steering committee.
           </Callout>
 
           <h2>Scope</h2>
