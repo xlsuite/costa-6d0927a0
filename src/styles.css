@@ -72,7 +72,9 @@ h1 { letter-spacing: -0.03em; }
   cursor: pointer;
   line-height: 1;
 }
-.btn-solid { background: var(--accent); color: #fff; }
+.btn-solid { background: var(--accent); }
+.btn.btn-solid,
+.btn.btn-solid:is(:hover, :focus, :focus-visible, :active, :visited) { color: var(--surface); }
 .btn-solid:hover { background: var(--accent-hover); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
 .btn-ghost:hover { background: var(--bg-alt); }
