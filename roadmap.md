@@ -10,6 +10,6 @@
 - [x] Run tests and verify directory navigation, mobile layout, and automated production build.
 
 ## Button contrast and About disclosure
-- [ ] Fix solid-button text colors globally and check all eight pages for WCAG AA contrast.
-- [ ] Replace the About disclosure verbatim and link to the adopter directory.
-- [ ] Run all tests and verify the automated production build.
+- [x] Fix solid-button text colors globally and check all eight pages for WCAG AA contrast.
+- [x] Replace the About disclosure verbatim and link to the adopter directory.
+- [x] Run all tests and verify the automated production build.
